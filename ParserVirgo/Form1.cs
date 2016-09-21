@@ -15,7 +15,7 @@ namespace ParserVirgo
     {
         List<string> urllist = new List<string>();
         SearcherAvito ks;
-        //SearcherGdeperevesti gps;
+        SearcherGdeperevesti gps;
         //List<ProductList> pl = new List<ProductList>();
         List<SearcherAvito> productList = new List<SearcherAvito>();
         
@@ -45,12 +45,12 @@ namespace ParserVirgo
         {
             List<string> list = new List<string>(); 
             int countPages = 1;
-            //Spyder spyder = new Spyder();
+            Spyder spyder = new Spyder();
 
             try
             {
                 //получаем кол-во страниц                
-                //countPages = spyder.GetCountPages();
+                countPages = spyder.GetCountPages();
             }
 
             catch (Exception Ex)
@@ -82,41 +82,41 @@ namespace ParserVirgo
         }
 
 
-        //private void ProgressPerevod(List<string> listUrls)
-        //{            
-        //    string path = @"C:\Users\User\Documents\ParserVirgo\Reports\textfile_";
-        //    System.IO.StreamWriter textFile = new System.IO.StreamWriter(path + time + ".txt");
+        private void ProgressPerevod(List<string> listUrls)
+        {
+            string path = @"C:\Users\User\Documents\ParserVirgo\Reports\textfile_";
+            System.IO.StreamWriter textFile = new System.IO.StreamWriter(path + time + ".txt");
 
-        //    for (int i = 0; i < listUrls.Count; i++)
-        //    {
-        //        gps = new SearcherGdeperevesti();
-        //        string sStr = "";
+            for (int i = 0; i < listUrls.Count; i++)
+            {
+                gps = new SearcherGdeperevesti();
+                string sStr = "";
 
-        //        if (Convert.ToBoolean(gps.DownLoadHtml(listUrls[i], goodProxiesList)))
-        //        {
-        //            //gps.Url = listUrls[i];
-        //            //gps.FindTitle();
-        //            //gps.FindAdress();
-        //            //gps.FindEmail();
-        //            //gps.FindFax();
-        //            //gps.FindPhone();
-        //            //gps.FindSite();
-        //            //sStr = gps.FindString();
-        //            gps.FindString();
-        //        }
+                if (Convert.ToBoolean(gps.DownLoadHtml(listUrls[i], goodProxiesList)))
+                {
+                    //gps.Url = listUrls[i];
+                    //gps.FindTitle();
+                    //gps.FindAdress();
+                    //gps.FindEmail();
+                    //gps.FindFax();
+                    //gps.FindPhone();
+                    //gps.FindSite();
+                    //sStr = gps.FindString();
+                    gps.FindString();
+                }
 
-        //        textFile.WriteLine(gps.Str);
-        //        //                textFile.WriteLine(sStr);
-        //        //textFile.WriteLineAsync(gps.Title + ";" + gps.Adress + ";" + gps.Email + ";" + gps.Fax + ";" + gps.Phone + ";" + gps.Site + ";");
-        //        //textFile.WriteAsync(gps.Title + ";" + gps.Adress + ";" + gps.Email + ";" + gps.Fax + ";" + gps.Phone + ";" + gps.Site + ";");
-        //        //textFile.WriteLine(gps.Title + ";" + gps.Adress + ";" + gps.Email + ";" + gps.Fax + ";" + gps.Phone + ";" + gps.Site + ";");
-        //        //textBox2.Text += sStr + Environment.NewLine;
-        //        textBox2.Text += gps.Str + Environment.NewLine;
+                textFile.WriteLine(gps.Str);
+                //                textFile.WriteLine(sStr);
+                //textFile.WriteLineAsync(gps.Title + ";" + gps.Adress + ";" + gps.Email + ";" + gps.Fax + ";" + gps.Phone + ";" + gps.Site + ";");
+                //textFile.WriteAsync(gps.Title + ";" + gps.Adress + ";" + gps.Email + ";" + gps.Fax + ";" + gps.Phone + ";" + gps.Site + ";");
+                //textFile.WriteLine(gps.Title + ";" + gps.Adress + ";" + gps.Email + ";" + gps.Fax + ";" + gps.Phone + ";" + gps.Site + ";");
+                //textBox2.Text += sStr + Environment.NewLine;
+                textBox2.Text += gps.Str + Environment.NewLine;
 
-        //    }
-        //    textFile.Close();
-        //    MessageBox.Show("Парсинг готов.");
-        //}
+            }
+            textFile.Close();
+            MessageBox.Show("Парсинг готов.");
+        }
 
 
 

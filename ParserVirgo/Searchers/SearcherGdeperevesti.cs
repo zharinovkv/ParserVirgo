@@ -6,8 +6,6 @@ using System.Threading.Tasks;
 
 namespace ParserVirgo
 {
-
-
     // класс поиск по Авито 
     // делает всю рабту - поиск, обработка, картинка
 

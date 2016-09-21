@@ -30,3 +30,9 @@ D:\Мои Документы\Visual Studio 2015\Projects\MyProjects\ParserVirgo\
 D:\Мои Документы\Visual Studio 2015\Projects\MyProjects\ParserVirgo\ParserVirgo\bin\Debug\ParserVirgo.exe.config
 D:\Мои Документы\Visual Studio 2015\Projects\MyProjects\ParserVirgo\ParserVirgo\obj\Debug\ParserVirgo.exe
 D:\Мои Документы\Visual Studio 2015\Projects\MyProjects\ParserVirgo\ParserVirgo\obj\Debug\ParserVirgo.pdb
+D:\Мои Документы\Visual Studio 2015\Projects\MyProjects\ParserVirgo\ParserVirgo\obj\Debug\ParserVirgo.csprojResolveAssemblyReference.cache
+D:\Мои Документы\Visual Studio 2015\Projects\MyProjects\ParserVirgo\ParserVirgo\obj\Debug\ParserVirgo.Form1.resources
+D:\Мои Документы\Visual Studio 2015\Projects\MyProjects\ParserVirgo\ParserVirgo\obj\Debug\ParserVirgo.Properties.Resources.resources
+D:\Мои Документы\Visual Studio 2015\Projects\MyProjects\ParserVirgo\ParserVirgo\obj\Debug\ParserVirgo.csproj.GenerateResource.Cache
+D:\Мои Документы\Visual Studio 2015\Projects\MyProjects\ParserVirgo\ParserVirgo\bin\Debug\ParserVirgo.exe
+D:\Мои Документы\Visual Studio 2015\Projects\MyProjects\ParserVirgo\ParserVirgo\bin\Debug\ParserVirgo.pdb

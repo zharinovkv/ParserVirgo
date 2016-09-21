@@ -9,7 +9,6 @@ namespace ParserVirgo
 {
     public class SaveAs
     {
-
         public void SaveAsCSV(List<SearcherAvito> list, string time)
         {
             DirectoryInfo di = new DirectoryInfo(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments));
@@ -71,7 +70,7 @@ namespace ParserVirgo
                 Directory.CreateDirectory(filepath);
             }
 
-            ks.Cover.Save(filepath + path);
+            //ks.Cover.Save(filepath + path);
         }
     }
 }

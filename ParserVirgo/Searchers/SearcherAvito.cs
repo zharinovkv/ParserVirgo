@@ -20,9 +20,10 @@ namespace ParserVirgo
         private string _html;
         private string _title;
         private List<Image> _cover;
+
         private string _url;
 
-        public Image Cover
+        public List<Image> Cover
         {
             get
             {

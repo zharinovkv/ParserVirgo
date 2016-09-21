@@ -15,7 +15,7 @@ namespace ParserVirgo
         // 5.50 функция возвращает  значение кол-ва страниц
         public int GetCountPages()
         {
-            int counterPages = 0;
+            int counterPages = 2;
 
             try
             {
