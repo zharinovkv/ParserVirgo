@@ -1,12 +1,7 @@
 ﻿using System;
-using System.ComponentModel;
 using System.Windows.Forms;
-using xNet;
 using ParserVirgo;
 using System.Collections.Generic;
-using System.Text;
-using System.Net;
-using ParserVirgo.Proxi;
 using System.Threading.Tasks;
 using ParserAvito.Spyder;
 
@@ -26,7 +21,6 @@ namespace ParserAvito
         public Form1()
         {
             InitializeComponent();
-            ExecuteProxies();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -62,7 +56,7 @@ namespace ParserAvito
                 for (int i = 1; i <= countPages; i++)
                 {
                     // при присваивании переменной значения срабатывает событие в основном потоке
-                    list.AddRange(spyder.GetListings(i));
+                    //list.AddRange(spyder.GetListings(i));
                 }
             }
 
@@ -133,11 +127,11 @@ namespace ParserAvito
         }
 
 
-        private async void ExecuteProxies()
+        private async Task<List<string>> ExecuteProxies()
         {
             PingProxi pingProxi = new PingProxi();
             List<string> goods = await pingProxi.Example();
-            goodProxiesList = goods;
+            return goods;
         }
 
 
@@ -156,6 +150,11 @@ namespace ParserAvito
         private void button2_Click(object sender, EventArgs e)
         {
             Progress(list2);
+        }
+
+        private async void button3_Click(object sender, EventArgs e)
+        {
+            goodProxiesList = await ExecuteProxies();
         }
     }
 }

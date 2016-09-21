@@ -8,10 +8,13 @@ namespace ParserAvito.Utils
 {
     public class UrlPair
     {
-        public string url;
-        public string referer;
-
         public string Url1 { get; set; }
         public string Referer { get; set; }
+
+        public UrlPair(string s, string b)
+        {
+            Url1 = s;
+            Referer = b;
+        }
     }
 }

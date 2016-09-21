@@ -12,7 +12,7 @@ namespace ParserAvito.Phone
 {
     public class Parser
     {
-        public string AvitoUrl { get; set; } = "https://m.avito.ru";
+        public string AvitoUrl { get; set; } = "https://www.avito.ru";
 
         public event Action<string> Logger;
 

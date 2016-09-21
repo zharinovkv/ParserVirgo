@@ -1,10 +1,5 @@
 ﻿using ParserAvito.Utils;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using xNet;
 
 
@@ -13,7 +8,7 @@ namespace ParserVirgo
 {
     public class GetUrlsList
     {
-        public List<string> GetListings(int Num)
+        public List<UrlPair> GetListings(int Num)
         {
             List<UrlPair> Url = new List<UrlPair>();
 
@@ -43,7 +38,7 @@ namespace ParserVirgo
 
                     for (int i = 1; i < row.Length; i++)
                     {
-                        Url.Add(new UrlPair(UrlPair.Url1 = (SiteSettings.siteurl + row[i]).ToString(), UrlPair.referer);
+                        Url.Add(new UrlPair((SiteSettings.siteurl + row[i]).ToString(), referer));
                     }
                 }
             }
@@ -53,7 +48,7 @@ namespace ParserVirgo
 
             }
 
-            return url;
+            return Url;
         }
 
     }
