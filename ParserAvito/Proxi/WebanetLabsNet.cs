@@ -10,9 +10,9 @@ namespace ParserVirgo.Proxi
 {
     class WebanetLabsNet
     {        
-        public static List<string> GetProxi()
+        public static string[] GetProxi()
         {
-            List<string> proxiesList = new List<string>();
+            string[] proxiesList = new string[0];
 
             try
             {
@@ -31,7 +31,9 @@ namespace ParserVirgo.Proxi
                     // указываем ссылку на страницу, в которй хранится кол-во старниц
                     string source = Request.Get(url).ToString().TrimStart('п', '»', 'ї');
                     //string str = source.Substring("", "");
-                    proxiesList = source.Split(new string[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries).ToList();
+                    //proxiesList = source.Split(new string[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries).ToList();
+                    proxiesList = source.Split(new string[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
+
                 }
             } catch{}
            
