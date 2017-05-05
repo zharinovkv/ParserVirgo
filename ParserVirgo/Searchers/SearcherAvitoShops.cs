@@ -1,37 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ParserVirgo.Utils;
 using xNet;
+using System.Drawing;
+using ParserAvito;
 
-namespace ParserAvito
+namespace ParserVirgo.Searchers
 {
-    public class ParserException : Exception
-    {
-        public ParserException(string message)
-            : base(message)
-        { }
-    }
-
-    public class SearcherAvito
+    class SearcherAvitoShops
     {
         private string _html;
         private string _title;
-        private List<Image> _cover;
 
         private string _url;
 
-        public List<Image> Cover
-        {
-            get
-            {
-                //if (_cover == null)
-                //    throw new ParserException("Изображение не загружено");
-                return _cover;
-            }
-        }
         public string Title
         {
             get
@@ -52,7 +37,6 @@ namespace ParserAvito
 
         public bool DownLoadHtml(string adress, List<string> goodUrlsList)
         {
-            _cover = null;
             //_title = null;
 
             // 7 16.20
@@ -67,41 +51,10 @@ namespace ParserAvito
             }
         }
 
-        public bool FindCover()
-        {             
-            if (string.IsNullOrEmpty(_html))
-                throw new ParserException("Код не был загружен. Сначала выполните Download Html");
-            TextSearcher ts = new TextSearcher(_html);
-
-            //ts.GoTo("b-gallery");
-            //ts.Skip("gallery-list");
-            //ts.Skip("gallery-link\" href=\"//");
-            //string imageFilmUri = "https://" + ts.ReadTo("\" id");
-
-            string[] imageFilmUriRelative = _html.Substrings("gallery-link\" href=\"//", "\" data-fallback", 0);
-            var imageFilmUri = from q in imageFilmUriRelative
-                               let q1 = "https://" + q
-                               select q1;   
-
-            foreach (var imageUri in imageFilmUri)
-            {
-                try
-                {
-                    _cover.Add(HtmlDownloadHelper.DownLoadImage(imageUri));
-                    return true;
-                }
-                catch
-                {
-                    return false;
-                }
-            }
-            return false;
-        }
-
         public bool FindTitle()
         {
             if (string.IsNullOrEmpty(_html))
-                throw new ParserException("Код не был загружен. Сначала выполните Download Html");
+                throw new Utils.ParserException("Код не был загружен. Сначала выполните Download Html");
             TextSearcher ts = new TextSearcher(_html);
 
             ts.Skip("avito.item.url = '/");
