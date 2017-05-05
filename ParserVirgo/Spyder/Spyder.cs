@@ -1,14 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using xNet;
 
 
 // в этом классе получаем 
-namespace ParserVirgo
+namespace ParserAvito
 {
     public class Spyder
     {
