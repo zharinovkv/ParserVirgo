@@ -1,4 +1,4 @@
-﻿namespace ParserVirgo
+﻿namespace ParserAvito
 {
     partial class Form1
     {

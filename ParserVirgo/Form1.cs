@@ -2,20 +2,22 @@
 using System.ComponentModel;
 using System.Windows.Forms;
 using xNet;
-using ParserVirgo;
+using ParserAvito;
 using System.Collections.Generic;
 using System.Text;
 using System.Net;
-using ParserVirgo.Proxi;
+using ParserAvito.Proxi;
 using System.Threading.Tasks;
+using ParserVirgo.Searchers;
 
-namespace ParserVirgo
+namespace ParserAvito
 {
     public partial class Form1 : Form
     {
         List<string> urllist = new List<string>();
-        SearcherAvito ks;
-        SearcherGdeperevesti gps;
+        SearcherAvitoShops saah;
+        //SearcherAvito ks;
+        //SearcherGdeperevesti gps;
         //List<ProductList> pl = new List<ProductList>();
         List<SearcherAvito> productList = new List<SearcherAvito>();
         
@@ -89,10 +91,10 @@ namespace ParserVirgo
 
             for (int i = 0; i < listUrls.Count; i++)
             {
-                gps = new SearcherGdeperevesti();
+                //gps = new SearcherAvito();
                 string sStr = "";
 
-                if (Convert.ToBoolean(gps.DownLoadHtml(listUrls[i], goodProxiesList)))
+                //if (Convert.ToBoolean(gps.DownLoadHtml(listUrls[i], goodProxiesList)))
                 {
                     //gps.Url = listUrls[i];
                     //gps.FindTitle();
@@ -102,16 +104,16 @@ namespace ParserVirgo
                     //gps.FindPhone();
                     //gps.FindSite();
                     //sStr = gps.FindString();
-                    gps.FindString();
+                    //gps.FindString();
                 }
 
-                textFile.WriteLine(gps.Str);
+                //textFile.WriteLine(gps.Str);
                 //                textFile.WriteLine(sStr);
                 //textFile.WriteLineAsync(gps.Title + ";" + gps.Adress + ";" + gps.Email + ";" + gps.Fax + ";" + gps.Phone + ";" + gps.Site + ";");
                 //textFile.WriteAsync(gps.Title + ";" + gps.Adress + ";" + gps.Email + ";" + gps.Fax + ";" + gps.Phone + ";" + gps.Site + ";");
                 //textFile.WriteLine(gps.Title + ";" + gps.Adress + ";" + gps.Email + ";" + gps.Fax + ";" + gps.Phone + ";" + gps.Site + ";");
                 //textBox2.Text += sStr + Environment.NewLine;
-                textBox2.Text += gps.Str + Environment.NewLine;
+                //textBox2.Text += gps.Str + Environment.NewLine;
 
             }
             textFile.Close();
@@ -119,6 +121,56 @@ namespace ParserVirgo
         }
 
 
+
+        //// получаем спарсеный результат
+        //private void Progress(List<string> listUrls)
+        //{
+        //    //string path = @"C:\Users\User\Documents\ParserVirgo\Reports\textfile_";
+        //    //System.IO.StreamWriter textFile = new System.IO.StreamWriter(path + time + ".txt");
+
+        //    for (int i = 0; i < listUrls.Count; i++)
+        //    {
+        //        ks = new SearcherAvito();
+
+        //        if (Convert.ToBoolean(ks.DownLoadHtml(listUrls[i], goodProxiesList)))
+        //        {
+        //            //ks.Url = listUrls[i];
+        //            ks.FindUrl(listUrls[i]);
+        //            ks.FindTitle();
+        //            ks.FindCover();
+        //        }
+
+        //        string imageName = "";
+
+        //        if (ks.Url != null)
+        //        {
+        //            string[] totoProcess = ks.Url.Split(new string[] { "/" }, StringSplitOptions.RemoveEmptyEntries);
+        //            imageName = totoProcess[totoProcess.Length - 1] + ".png";
+        //        }
+
+        //        if (ks.Cover != null)
+        //        {
+        //            SaveAs saveImage = new SaveAs();
+        //            saveImage.SaveImage(ks, imageName, time);
+        //            ks.ImagePath = imageName;
+        //            productList.Add(ks);
+        //            //textFile.WriteLine("a" + i + ". " + ks.Url + ";" + ks.Title + ";" + ks.Title + ".png" + ";" + Environment.NewLine);
+        //            textBox2.Text += ks.Url + "\t" + ks.Title + "\t" + imageName + Environment.NewLine;
+        //        }
+        //        else
+        //        {
+        //            ks.ImagePath = "NO IMAGE";
+        //            productList.Add(ks);
+        //            //textFile.WriteLine("b" + i + ". " + ks.Url + ";" + ks.Title + ";" + "No Image" + ";" + Environment.NewLine);
+        //            textBox2.Text += ks.Url + "\t" + ks.Title + "\t" + "No Image" + Environment.NewLine;
+        //        }
+        //    }
+
+        //    SaveAs saveAs = new SaveAs();
+        //    //textFile.Close();
+        //    saveAs.SaveAsCSV(productList, time);
+        //    MessageBox.Show("Парсинг готов.");
+        //}
 
         // получаем спарсеный результат
         private void Progress(List<string> listUrls)
@@ -128,48 +180,29 @@ namespace ParserVirgo
 
             for (int i = 0; i < listUrls.Count; i++)
             {
-                ks = new SearcherAvito();
+                saah = new SearcherAvitoShops();
 
-                if (Convert.ToBoolean(ks.DownLoadHtml(listUrls[i], goodProxiesList)))
+                if (Convert.ToBoolean(saah.DownLoadHtml(listUrls[i], goodProxiesList)))
                 {
-                    //ks.Url = listUrls[i];
-                    ks.FindUrl(listUrls[i]);
-                    ks.FindTitle();
-                    ks.FindCover();
+                    //saah.Url = listUrls[i];
+                    saah.FindUrl(listUrls[i]);
+                    saah.FindTitle();
                 }
 
                 string imageName = "";
 
-                if (ks.Url != null)
+                if (saah.Url != null)
                 {
-                    string[] totoProcess = ks.Url.Split(new string[] { "/" }, StringSplitOptions.RemoveEmptyEntries);
+                    string[] totoProcess = saah.Url.Split(new string[] { "/" }, StringSplitOptions.RemoveEmptyEntries);
                     imageName = totoProcess[totoProcess.Length - 1] + ".png";
-                }
-
-                if (ks.Cover != null)
-                {
-                    SaveAs saveImage = new SaveAs();
-                    saveImage.SaveImage(ks, imageName, time);
-                    ks.ImagePath = imageName;
-                    productList.Add(ks);
-                    //textFile.WriteLine("a" + i + ". " + ks.Url + ";" + ks.Title + ";" + ks.Title + ".png" + ";" + Environment.NewLine);
-                    textBox2.Text += ks.Url + "\t" + ks.Title + "\t" + imageName + Environment.NewLine;
-                }
-                else
-                {
-                    ks.ImagePath = "NO IMAGE";
-                    productList.Add(ks);
-                    //textFile.WriteLine("b" + i + ". " + ks.Url + ";" + ks.Title + ";" + "No Image" + ";" + Environment.NewLine);
-                    textBox2.Text += ks.Url + "\t" + ks.Title + "\t" + "No Image" + Environment.NewLine;
                 }
             }
 
             SaveAs saveAs = new SaveAs();
-            //            textFile.Close();
+            //textFile.Close();
             saveAs.SaveAsCSV(productList, time);
             MessageBox.Show("Парсинг готов.");
         }
-
 
         private async void ExecuteProxies()
         {

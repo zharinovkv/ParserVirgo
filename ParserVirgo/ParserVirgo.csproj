@@ -73,7 +73,9 @@
     <Compile Include="Proxi\RosinstrumentCom.cs" />
     <Compile Include="Proxi\SpysRu.cs" />
     <Compile Include="Proxi\WebanetLabsNet.cs" />
+    <Compile Include="Searchers\SearcherAvitoShops.cs" />
     <Compile Include="Searchers\SearcherGdeperevesti.cs" />
+    <Compile Include="Utils\ParserException.cs" />
     <Compile Include="Utils\PingProxi.cs" />
     <Compile Include="Utils\SiteSettings.cs" />
     <Compile Include="Form1.cs">
