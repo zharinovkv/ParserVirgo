@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParserVirgo", "ParserVirgo\ParserVirgo.csproj", "{A35EB2F5-6084-4C70-962B-638FFD640FFC}"
 EndProject
@@ -9,6 +9,18 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	ProjectSection(SolutionItems) = preProject
 		readme.txt = readme.txt
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "spb24Parser", "spb24Parser\spb24Parser.csproj", "{3956ABEF-73B8-4E3D-8837-1CD27FA4B2D2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "spb24ParserContent", "spb24ParserContent\spb24ParserContent.csproj", "{4325D5C1-2264-4CC9-B929-D5E52741F71F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParserAvito", "ParserAvito\ParserAvito.csproj", "{BBA9EF6F-CA9D-4E86-B8E4-7622D6124E1C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GetListUrl1", "GetListUrl1\GetListUrl1.csproj", "{8387C0A4-8B40-484B-8A67-5D63B485C98D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParserAvitoSimple", "ParserAvitoSimple\ParserAvitoSimple.csproj", "{E10478CF-6CC2-4625-9C90-01DFC18B4034}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "spb24ParserLinks", "spb24ParserLinks\spb24ParserLinks.csproj", "{8C92A025-DC86-4239-A389-BAC91ACC388A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -20,6 +32,30 @@ Global
 		{A35EB2F5-6084-4C70-962B-638FFD640FFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A35EB2F5-6084-4C70-962B-638FFD640FFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A35EB2F5-6084-4C70-962B-638FFD640FFC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3956ABEF-73B8-4E3D-8837-1CD27FA4B2D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3956ABEF-73B8-4E3D-8837-1CD27FA4B2D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3956ABEF-73B8-4E3D-8837-1CD27FA4B2D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3956ABEF-73B8-4E3D-8837-1CD27FA4B2D2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4325D5C1-2264-4CC9-B929-D5E52741F71F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4325D5C1-2264-4CC9-B929-D5E52741F71F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4325D5C1-2264-4CC9-B929-D5E52741F71F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4325D5C1-2264-4CC9-B929-D5E52741F71F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BBA9EF6F-CA9D-4E86-B8E4-7622D6124E1C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BBA9EF6F-CA9D-4E86-B8E4-7622D6124E1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BBA9EF6F-CA9D-4E86-B8E4-7622D6124E1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BBA9EF6F-CA9D-4E86-B8E4-7622D6124E1C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8387C0A4-8B40-484B-8A67-5D63B485C98D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8387C0A4-8B40-484B-8A67-5D63B485C98D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8387C0A4-8B40-484B-8A67-5D63B485C98D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8387C0A4-8B40-484B-8A67-5D63B485C98D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E10478CF-6CC2-4625-9C90-01DFC18B4034}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E10478CF-6CC2-4625-9C90-01DFC18B4034}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E10478CF-6CC2-4625-9C90-01DFC18B4034}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E10478CF-6CC2-4625-9C90-01DFC18B4034}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8C92A025-DC86-4239-A389-BAC91ACC388A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C92A025-DC86-4239-A389-BAC91ACC388A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C92A025-DC86-4239-A389-BAC91ACC388A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C92A025-DC86-4239-A389-BAC91ACC388A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
