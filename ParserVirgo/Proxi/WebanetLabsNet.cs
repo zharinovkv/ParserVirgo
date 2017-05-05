@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using xNet;
 
-namespace ParserVirgo.Proxi
+namespace ParserAvito.Proxi
 {
     class WebanetLabsNet
     {        

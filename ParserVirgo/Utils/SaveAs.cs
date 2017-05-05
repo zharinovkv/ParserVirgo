@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ParserVirgo
+namespace ParserAvito
 {
     public class SaveAs
     {
@@ -14,7 +14,7 @@ namespace ParserVirgo
             DirectoryInfo di = new DirectoryInfo(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments));
 
             string fileName = SiteSettings.suburlstr;  // for report
-            string filepath = di + @"\ParserVirgo\Reports\" + SiteSettings.suburlstr + time + "\\";
+            string filepath = di + @"\ParserAvito\Reports\" + SiteSettings.suburlstr + time + "\\";
 
             FileStream toSave;
             StreamWriter sw;
@@ -40,14 +40,13 @@ namespace ParserVirgo
 
             for (int i = 0; i < list.Count; i++)
             {
-                if (list[i].Cover != null)
+                if (true)
                 {
                     stringBuilder.AppendLine(list[i].ToString());
                 }
                 else
                 {
                     stringBuilder.AppendLine(list[i].ToString());
-//                    stringBuilder.AppendLine(list[i].Title + ";" + "NoImage" + ";" + list[i].Url);
                 }
             }
 
@@ -63,7 +62,7 @@ namespace ParserVirgo
 
             string fileName = SiteSettings.suburlstr;  // for report
             FileInfo finfo = new FileInfo(fileName);
-            string filepath = di + @"\ParserVirgo\Reports\" + SiteSettings.suburlstr + time + "\\";
+            string filepath = di + @"\ParserAvito\Reports\" + SiteSettings.suburlstr + time + "\\";
 
             if (!Directory.Exists(filepath))
             {

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ParserVirgo.Properties {
+namespace ParserAvito.Properties {
     using System;
     
     

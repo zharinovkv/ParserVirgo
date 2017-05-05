@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ParserVirgo
+namespace ParserAvito
 {
     public class SiteSettings
     {
@@ -17,9 +17,11 @@ namespace ParserVirgo
         public static string sourcePageSubstringsThree = "\">";
 
         // это нужно для поиска ссылки на страницу контента со страницы навигационной"
-        public static string sourcePageSubstringsFoure = "<div class=\"description\"> <h3 class=\"title\"> <a href=\"/";
-        public static string sourcePageSubstringsFive = "\" title=";
+        //public static string sourcePageSubstringsFoure = "<div class=\"description\">  <h3 class=\"title item-description-title\"> <a class=\"item-description-title-link\" href=\"/";
+        //public static string sourcePageSubstringsFive = "\" title=";
 
+        public static string sourcePageSubstringsFoure = "<a class=\"item-description-title-link\" href=\"/";
+        public static string sourcePageSubstringsFive = "\" title=";
 
         //http://gdeperevesti.ru/spb/structure/Pismennyperevod/?sort=6&page=2&per_page=100
 
