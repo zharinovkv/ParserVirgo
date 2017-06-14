@@ -1,0 +1,6 @@
+D:\Мои Документы\Visual Studio 2015\Projects\MyProjects\ParserVirgo\spb24ParserLinks\bin\Debug\spb24ParserLinks.exe.config
+D:\Мои Документы\Visual Studio 2015\Projects\MyProjects\ParserVirgo\spb24ParserLinks\bin\Debug\spb24ParserLinks.exe
+D:\Мои Документы\Visual Studio 2015\Projects\MyProjects\ParserVirgo\spb24ParserLinks\bin\Debug\spb24ParserLinks.pdb
+D:\Мои Документы\Visual Studio 2015\Projects\MyProjects\ParserVirgo\spb24ParserLinks\obj\Debug\spb24ParserLinks.exe
+D:\Мои Документы\Visual Studio 2015\Projects\MyProjects\ParserVirgo\spb24ParserLinks\obj\Debug\spb24ParserLinks.pdb
+D:\Мои Документы\Visual Studio 2015\Projects\MyProjects\ParserVirgo\spb24ParserLinks\bin\Debug\xNet.dll
