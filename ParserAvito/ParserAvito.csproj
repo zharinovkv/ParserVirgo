@@ -59,24 +59,17 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Model\Request.cs" />
     <Compile Include="Parser\HtmlDownloadHelper.cs" />
     <Compile Include="Parser\TextSearcher.cs" />
     <Compile Include="Phone\Articles.cs" />
     <Compile Include="Phone\Parser.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Proxi\FreeProxyListNet.cs" />
-    <Compile Include="Proxi\GoogleProxyNet.cs" />
-    <Compile Include="Proxi\PrimeSpeedRu.cs" />
-    <Compile Include="Proxi\ProxyListOrg.cs" />
-    <Compile Include="Proxi\RosinstrumentCom.cs" />
-    <Compile Include="Proxi\SpysRu.cs" />
-    <Compile Include="Proxi\WebanetLabsNet.cs" />
     <Compile Include="Searchers\SearcherAvito.cs" />
     <Compile Include="Spyder\CountPagesLists.cs" />
     <Compile Include="Spyder\GetUrlsList.cs" />
     <Compile Include="Utils\Mailer.cs" />
-    <Compile Include="Utils\PingProxi.cs" />
     <Compile Include="Utils\Randoms.cs" />
     <Compile Include="Utils\SaveAs.cs" />
     <Compile Include="Utils\SiteSettings.cs" />

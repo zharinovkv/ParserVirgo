@@ -10,6 +10,6 @@
 
 /** как вызвать парсер  
  * 
- *          Parser parser = Parser.Instance;
+ *          ParserPhone parser = ParserPhone.Instance;
             parser.ParseAll("https://m.avito.ru/urus-martan/oborudovanie_dlya_biznesa", 0);
 **/ 

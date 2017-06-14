@@ -7,123 +7,145 @@ using System.Text;
 using System.Threading.Tasks;
 using HtmlAgilityPack;
 using System.Threading;
+using System.Windows.Forms;
 
 namespace ParserAvito.Phone
 {
-    public class Parser
+    public class ParserPhone
     {
-        public string AvitoUrl { get; set; } = "https://www.avito.ru";
-
+        public string AvitoUrl { get; set; } = "https://m.avito.ru";
         public event Action<string> Logger;
+        Random x = new Random();
+        List<bool> error = new List<bool>();
 
-        // этот метод запускает метод полоучениясписка урлов страниц с объявлениями,
-        // а затем парсит эти урлы 
-        public async void ParseAll(string url, int pageNumber = 0)
-        {
-            //var _refs = await ParseRefs(url, pageNumber);
-            // Logger("Найдено " + _refs.Length + " объявлений!");
-            //ParseArticles(_refs);
-        }
-
-        #region Private Methods
-
-        // этот метод получает список урлов страниц с объявлениями,
-        public async Task<string[]> ParseRefs(string url, int pageNumber = 0)
-        {
-            List<string> _urls = new List<string>();
-            int _pageNum = pageNumber > 0 ? pageNumber - 1 : pageNumber;
-            bool _flag = true;
-            while (_flag)
-            {
-                _pageNum++;
-                try
-                {
-                    Task<HtmlDocument> _task = new Task<HtmlDocument>(() => { return new HtmlWeb().Load(url + "?p=" + _pageNum); }); _task.Start();
-                    HtmlDocument _doc = await _task.ConfigureAwait(false);
-                    HtmlNodeCollection _hrefs = _doc.DocumentNode.SelectNodes("//a[@class='item-link']");
-                    foreach (var item in _hrefs)
-                    {
-                        var _url = AvitoUrl + item.Attributes["href"].Value;
-                        var _ref = _url; // AvitoDb.Articles.FirstOrDefault(art => art.Url == _url);
-
-
-                        if (_ref == null)
-                        {
-                            _urls.Add(_url);
-                        }
-                    }
-                    HtmlNodeCollection _nextPageRef = _doc.DocumentNode.SelectNodes("//li[@class='page page-next']");
-                    if (_nextPageRef == null) _flag = false;
-
-                }
-                catch (Exception ex)
-                {
-                    Logger.Invoke(ex.ToString());
-                }
-            }
-
-            return _urls.ToArray();
-        }
+        StringBuilder stringBuilder = new StringBuilder();
+        int counter = 5027;
 
         // этот метод парсит обхявление
-        public async void ParseArticles(params string[] refs)
+        public async void ParseArticles(Request[] refs)
         {
-            foreach (var url in refs)
+            foreach (var item in refs)
             {
+                int time1 = x.Next(2000, 6000);
+                Thread.Sleep(time1);
+
                 try
                 {
-                    //Articles _article = AvitoDb.Articles.FirstOrDefault(art => art.Url == url);
+                    //NetworkCredential credentials = new NetworkCredential();
+                    Task<HtmlAgilityPack.HtmlDocument> _task = new Task<HtmlAgilityPack.HtmlDocument>(() => { return new HtmlWeb().Load(item.Url, "GET"); }); _task.Start();
+                    HtmlAgilityPack.HtmlDocument doc = await _task.ConfigureAwait(false);
 
-                    //if (_article != null)
-                    //{
-                    //    continue;
-                    //}
+                    // 3 это формирует запрос, который уходит на сервер и обрабатывается там и выдает ответ.
+                    //HttpWebRequest request = WebRequest.Create(item.Url) as HttpWebRequest;
 
-                    Articles _article = new Articles();
 
-                    //асинхронно загружаем содержание url
-                    Task<HtmlDocument> _task = new Task<HtmlDocument>(() => { return new HtmlWeb().Load(url); }); _task.Start();
-                    HtmlDocument _doc = await _task.ConfigureAwait(false);
-                                       
 
-                    //парсим содержание
-                    var _info = _doc.DocumentNode.SelectSingleNode("//div[@class='description-preview-wrapper']");
-                    HtmlNode _info2 = null;
-                    string _infoStr = "";
-                    if (_info == null)
-                    {
-                        _info = _doc.DocumentNode.SelectSingleNode("//div[@class='description-preview-wrapper description-with-html']");
-                        _info2 = _doc.DocumentNode.SelectSingleNode("//div[@class='shop-description']");
+                    ////// Obtain the 'Proxy' of the  Default browser.  
+                    ////IWebProxy proxy = request.Proxy;
 
-                    }
+                    ////WebProxy myProxy = new WebProxy();
+                    ////string proxyAddress;
 
-                    _infoStr = _info.InnerText.Replace("\n", "");//.Remove(0, 1).Remove(_infoStr.Length - 3, 3);
-                    if (_info2 != null) _infoStr += _info2.InnerText.Replace("\n", "");//.Remove(0, 1).Remove(_infoStr.Length - 3, 3);
+                    ////try
+                    ////{
+                    ////    proxyAddress = "http://201.55.46.6:80";
 
-                    //парсим номер объявления
-                    //var _number = _doc.DocumentNode.SelectSingleNode("//div[@class='item-id']").InnerHtml.Replace("Объявление №", "");
+                    ////    if (proxyAddress.Length > 0)
+                    ////    {
+                    ////        Uri newUri = new Uri(proxyAddress);
+                    ////        // Associate the newUri object to 'myProxy' object so that new myProxy settings can be set.
+                    ////        myProxy.Address = newUri;
+                    ////        // Create a NetworkCredential object and associate it with the 
+                    ////        // Proxy property of request object.
+                    ////        request.Proxy = myProxy;
+                    ////    }
+                    ////}
+                    ////catch (Exception ex)
+                    ////{
+                    ////    ex.ToString(); 
+                    ////}
+
+
+                    ////request.Proxy = new WebProxy("87.98.147.195", 3128);
+
+
+                    //request.UserAgent = item.UserAgent;
+                    //request.Accept = "text/html,application/xhtml+xml,application/xml;q=0.9,*;q=0.8";
+                    //request.KeepAlive = true;
+                    //request.AllowAutoRedirect = true;
+                    //request.Timeout = 60000;
+                    //request.Method = "POST";
+                    //request.Referer = item.UrlReferer;
+                    //request.Headers["Accept-Language"] = "ru-RU";
+
+                    //// 4 получаем ответ
+                    //HttpWebResponse response = request.GetResponse() as HttpWebResponse;
+
+                    //// 5 поток данных получаемых с сервера
+                    //StreamReader sr = new StreamReader(response.GetResponseStream());
+                    //sr.ReadLine();
+                    //string html = sr.ReadToEnd();
+
+                    //HtmlAgilityPack.HtmlDocument doc = new HtmlAgilityPack.HtmlDocument();
+                    //doc.LoadHtml(html);
+
+                    int time2 = x.Next(2000, 6000);
+                    Thread.Sleep(time2);
 
                     //парсим номер телефона
-                    var _phone = await _parsePhone(AvitoUrl + _doc.DocumentNode.SelectSingleNode("//a[@title='Телефон продавца']").Attributes["href"].Value + "?async", url);
+                    var _phone = await _parsePhone(AvitoUrl + doc.DocumentNode.SelectSingleNode("//a[@title='Телефон продавца']").Attributes["href"].Value + "?async", item.Url, item.UserAgent);
 
-                    _article = new Articles();
-                    _article.Url = url;
-                    _article.Phone = _phone;
 
-                    Console.WriteLine(_article.Url + " " + _article.Phone);
+                    //Articles _article = new Articles();
+                    //_article.Url = item.Url;
+                    //_article.Phone = _phone;
+                    //Console.WriteLine(_article.Url + " " + _article.Phone);
 
+                    int time3 = time1 + time2;
+                    stringBuilder.Append(item.Url + "; " + _phone + "; " + time3).AppendLine();
+                    counter++;
+
+                    SaveAs saveAs = new SaveAs();
+                    saveAs.SaveAsCSV(stringBuilder, counter.ToString());
+                    stringBuilder.Clear();
+
+                    //if (counter > 100)
+                    //{ 
+                    if (counter % 10 == 0)
+                    {
+                        Thread.Sleep(x.Next(counter / 2, counter));
+
+                        //SaveAs saveAs = new SaveAs();
+                        //saveAs.SaveAsCSV(stringBuilder, counter);
+                        //MessageBox.Show(stringBuilder.ToString());
+                    }
+                    //}
                 }
                 catch (Exception ex)
                 {
-                    ex.ToString();
+                    counter++;
+                    StringBuilder sb = new StringBuilder();
+                    sb.Append(item.Url + "/r/n" + ex.ToString());
+                    SaveAs saveAs = new SaveAs();
+                    saveAs.SaveAsCSV(sb, counter.ToString() + " error");
+                    sb.Clear();
+                    Thread.Sleep(x.Next(counter * 5, counter * 20));
+
+                    error.Add(true);
+                    if (error.Count > 2)
+                    {
+                        Thread.Sleep(x.Next(counter * 10, counter * 20));
+                        //error.Clear();
+                    }
                 }
+
             }
         }
 
-        private async Task<string> _parsePhone(string url, string referer)
+        private async Task<string> _parsePhone(string url, string referer, string useragent)
         {
             HttpWebRequest request = (HttpWebRequest)HttpWebRequest.Create(url);
-            request.UserAgent = "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.103 Safari/537.36";
+            request.UserAgent = useragent;
             request.Accept = "application/json, text/javascript, */*; q=0.01";
             request.Referer = referer;
             // request.Headers.Add("Accept-Charset", "windows-1251,utf-8;q=0.7,*;q=0.7");        
@@ -135,10 +157,9 @@ namespace ParserAvito.Phone
                 response = (HttpWebResponse)await request.GetResponseAsync();
                 StreamReader _reader = new StreamReader(response.GetResponseStream());
                 _phone = _reader.ReadLine();
-                //_phone = _phone./*Remove(_phone.Length - 4, 4).*/Replace(" ", "").Replace("-", "");
                 _phone = _phone.Replace("{\"phone\":\"", "").Replace("\"}", "");
 
-                Console.WriteLine(_phone);
+                Console.WriteLine(url, " ", _phone);
                 response.Close();
             }
             catch (Exception ex)
@@ -147,23 +168,25 @@ namespace ParserAvito.Phone
             }
             return _phone;
         }
-        #endregion
+
+
 
         #region Singlton
-        private Parser()
+
+        public ParserPhone()
         {
         }
 
 
-        private static Parser _instance;
+        private static ParserPhone _instance;
 
-        public static Parser Instance
+        public static ParserPhone Instance
         {
             get
             {
                 if (_instance == null)
                 {
-                    _instance = new Parser();
+                    _instance = new ParserPhone();
                 }
                 return _instance;
             }

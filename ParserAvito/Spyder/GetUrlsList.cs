@@ -4,7 +4,7 @@ using xNet;
 
 
 // в этом классе получаем 
-namespace ParserVirgo
+namespace ParserAvito
 {
     public class GetUrlsList
     {

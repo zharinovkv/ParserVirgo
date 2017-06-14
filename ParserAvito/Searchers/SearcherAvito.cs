@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using xNet;
 
-namespace ParserVirgo
+namespace ParserAvito
 {
     public class ParserException : Exception
     {
@@ -19,19 +21,9 @@ namespace ParserVirgo
     {
         private string _html;
         private string _title;
-        private List<Image> _cover;
-
         private string _url;
 
-        public List<Image> Cover
-        {
-            get
-            {
-                //if (_cover == null)
-                //    throw new ParserException("Изображение не загружено");
-                return _cover;
-            }
-        }
+
         public string Title
         {
             get
@@ -48,54 +40,21 @@ namespace ParserVirgo
                 return _url;
             }
         }
-        public string ImagePath { get; set; }
 
-        public bool DownLoadHtml(string adress, List<string> goodUrlsList)
+
+        public bool DownLoadHtml(Request adress)
         {
-            _cover = null;
-            //_title = null;
 
             // 7 16.20
             try
             {
-                _html = HtmlDownloadHelper.DownloadHtml(string.Format(adress), Encoding.UTF8, goodUrlsList);
+                _html = HtmlDownloadHelper.DownloadHtml(adress, Encoding.UTF8);
                 return true;
             }
             catch
             {
                 return false;
             }
-        }
-
-        public bool FindCover()
-        {             
-            if (string.IsNullOrEmpty(_html))
-                throw new ParserException("Код не был загружен. Сначала выполните Download Html");
-            TextSearcher ts = new TextSearcher(_html);
-
-            //ts.GoTo("b-gallery");
-            //ts.Skip("gallery-list");
-            //ts.Skip("gallery-link\" href=\"//");
-            //string imageFilmUri = "https://" + ts.ReadTo("\" id");
-
-            string[] imageFilmUriRelative = _html.Substrings("gallery-link\" href=\"//", "\" data-fallback", 0);
-            var imageFilmUri = from q in imageFilmUriRelative
-                               let q1 = "https://" + q
-                               select q1;   
-
-            foreach (var imageUri in imageFilmUri)
-            {
-                try
-                {
-                    _cover.Add(HtmlDownloadHelper.DownLoadImage(imageUri));
-                    return true;
-                }
-                catch
-                {
-                    return false;
-                }
-            }
-            return false;
         }
 
         public bool FindTitle()
@@ -135,7 +94,36 @@ namespace ParserVirgo
 
         public override string ToString()
         {
-            return string.Format("{0} \t  {1} \t {2}", Title, ImagePath, Url, Environment.NewLine);
+            return string.Format("{0} \t  {1} \t {2}", Title, Url, Environment.NewLine);
         }
+
+        private async Task<string> _parsePhone(string url, string referer)
+        {
+            HttpWebRequest request = (HttpWebRequest)HttpWebRequest.Create(url);
+            request.UserAgent = "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.103 Safari/537.36";
+            request.Accept = "application/json, text/javascript, */*; q=0.01";
+            request.Referer = referer;
+            // request.Headers.Add("Accept-Charset", "windows-1251,utf-8;q=0.7,*;q=0.7");        
+            request.Method = "GET";
+            HttpWebResponse response;
+            string _phone = "";
+            try
+            {
+                response = (HttpWebResponse)await request.GetResponseAsync();
+                StreamReader _reader = new StreamReader(response.GetResponseStream());
+                _phone = _reader.ReadLine();
+                _phone = _phone.Replace("{\"phone\":\"", "").Replace("\"}", "");
+
+                Console.WriteLine(url, " ", _phone);
+                response.Close();
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return _phone;
+        }
+
+
     }
 }

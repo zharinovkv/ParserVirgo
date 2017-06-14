@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 //http://kipor-msk.ru/sluchajnye-chisla-v-c-net
 
-namespace ParserVirgo
+namespace ParserAvito
 {
     public class Randoms
     {

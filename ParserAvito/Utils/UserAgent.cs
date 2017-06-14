@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ParserAvito.Properties;
 
-namespace ParserVirgo
+namespace ParserAvito
 {
     public class UserAgent
     {
